@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=13.201.93.107
+      - DB_PORT=5432
+      - DB_NAME=eventdb
+      - DB_USER=adiuser
+      - DB_PASS=rajarama
+    restart: unless-stopped
+
+  frontend:
+    build: ./clerk-react
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

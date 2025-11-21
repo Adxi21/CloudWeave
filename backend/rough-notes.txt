@@ -1,0 +1,76 @@
+@app.post("/api/registration")
+async def receive_registration(data: RegistrationData):
+    print("=== RECEIVED REGISTRATION DATA ===")
+    print(f"Event: {data.event}")
+    print(f"Contact Email: {data.contactEmail}")
+    print(f"Contact Number: {data.contactNumber}")
+    print(f"Total Participants: {data.totalParticipants}")
+    print("\n" + "="*50)
+    
+    # Process each participant
+    for i, participant in enumerate(data.participants):
+        print(f"\n🧑 PARTICIPANT {i}:")
+        print("─"*30)
+        print(participant)
+        print("\n" + "="*50)
+    
+    return {"status": "success", "message": "Registration received successfully"}
+
+
+
+@app.post("/api/registration")
+async def receive_registration(data: RegistrationData):
+    print("=== RECEIVED REGISTRATION DATA ===")
+    print(f"Event: {data.event}")
+    print(f"Contact Email: {data.contactEmail}")
+    print(f"Contact Number: {data.contactNumber}")
+    print(f"Total Participants: {data.totalParticipants}")
+    print("\n" + "="*50)
+    
+    
+    for participant in data.participants :
+
+        # populate the `People Table`
+        event_name = data.event
+        bookers_email = data.contactEmail
+        bookers_phone = data.contactNumber
+        name = participant.get("name", "")
+        age = participant.get("age", "")
+        origin = participant.get("origin", "")
+        contact = participant.get("contact", "")
+        dates = List[participant.get("dates","")]
+        travelMode = participant.get("travelMode", "")
+        departure_from_home = participant.get("departure_from_home", "")
+        arrival_at_venue = participant.get("arrival_at_venue", "")
+        accommodation = participant.get("accommodation", "")
+        cot_required = participant.get("cot", "")
+        difficultyClimbingStairs = participant.get("difficultyClimbingStairs", "")
+        localAssistance = participant.get("localAssistance", "")
+        recordings = participant.get("recordings", "")
+        recordPrograms = participant.get("recordPrograms", "")
+
+        print({
+            "event_name": event_name,
+            "bookers_email": bookers_email,
+            "bookers_phone": bookers_phone,
+            "name": name,
+            "age": age,
+            "origin": origin,
+            "contact": contact,
+            "dates": dates,
+            "travelMode": travelMode,
+            "departure_from_home": departure_from_home,
+            "arrival_at_venue": arrival_at_venue,
+            "accommodation": accommodation,
+            "cot_required": cot_required,
+            "difficultyClimbingStairs": difficultyClimbingStairs,
+            "localAssistance": localAssistance,
+            "recordings": recordings,
+            "recordPrograms": recordPrograms
+        })
+        print("\n" + "="*50)
+        print("\n" + "="*50)
+
+
+
+    return {"status": "success", "message": "Registration received successfully"}
